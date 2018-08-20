@@ -1,0 +1,19 @@
+extends layout  
+
+block scripts
+
+block content
+    h1= title
+    // Just some comment 
+    //- this one won't show in comments
+    - var pets = ['cat', 'dog']
+    ul
+      each pet, index in pets
+        li= pet + ': ' + index
+      else
+        li There are no values
+    - var i = 0
+    ul
+      while i < 12
+        li= i++
+    
