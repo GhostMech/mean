@@ -1,6 +1,10 @@
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const port = (process.env.PORT || 3000);
+const mongoose = require('./config/mongoose');
+const db = mongoose();
 const express = require('./config/express');
 const app = express();
+
 
 app.use(function(req, res, next) {
     console.log(req.method);
@@ -13,7 +17,7 @@ app.get('/', (req, res, next) => {
     //res.send('<h1>Express server is up!</h1>');
 });
 app.get('/pug', (req, res, next) => {
-    res.render('index.pug', {title: 'GMH Homepage'});
+    res.render('index', {title: 'GMH Homepage'});
 });
 
 app.get('/hello', (req, res, next) => {
@@ -29,21 +33,8 @@ app.get('/hello', (req, res, next) => {
 
     res.send(JSON.stringify(all));
 });
-app.post('/hello', (req, res, next) => {
 
-    let all = {
-        query: req.query,
-        params: req.params,
-        body: req.body,
-        path: req.path,
-        host: req.hostname,
-        cookies: req.cookies
-    };
-
-    res.send(JSON.stringify(all));
-});
-
-    const hasName = (req, res, next) => {
+    /* const hasName = (req, res, next) => {
         if (req.param('name')) {
             next();
         } else {
@@ -54,8 +45,8 @@ app.post('/hello', (req, res, next) => {
     const sayHello = (req, res, next) => {
         res.send('<p>Hello ' + req.param('name'));
     };
-    app.get('/ask', hasName, sayHello);
+    app.get('/ask', hasName, sayHello); */
 
 app.listen(port);
+module.exports = app;
 console.log(`Server listening at 127.0.0.1:${port}`);
-
