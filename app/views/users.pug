@@ -1,0 +1,18 @@
+extends layout
+
+block scripts
+
+block content
+    form(action="/users" method="post")
+        p Enter your first name: 
+            input(name="firstname")
+        p Enter your last name: 
+            input(name="lastname")
+        p Enter your email address: 
+            input(name="email" type="email")
+        P Select a username: 
+            input(name="username")
+        p Enter a password: 
+            input(name="password" type="password")
+        p
+            input(type="submit" value="Send Info")

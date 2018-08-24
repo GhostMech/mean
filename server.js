@@ -33,19 +33,10 @@ app.get('/hello', (req, res, next) => {
 
     res.send(JSON.stringify(all));
 });
+app.get('/register', (req, res, next) => {
+    res.render('users');
+});
 
-    /* const hasName = (req, res, next) => {
-        if (req.param('name')) {
-            next();
-        } else {
-            res.send('<p>What is your name?</p>');
-        }
-    };
-
-    const sayHello = (req, res, next) => {
-        res.send('<p>Hello ' + req.param('name'));
-    };
-    app.get('/ask', hasName, sayHello); */
 
 app.listen(port);
 module.exports = app;
